@@ -1,4 +1,4 @@
-from constants import API_KEY
+from constants import API_TOKEN
 from discord.ext import commands
 
 #Creates a bot object
@@ -9,4 +9,4 @@ async def on_ready():
     print('Bot is online!')
 
 #Initializes bot
-client.run(API_KEY)
+client.run(API_TOKEN)
