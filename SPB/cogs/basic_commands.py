@@ -13,6 +13,11 @@ class BasicCommands(commands.Cog):
         await ctx.send('Pong!')
         await ctx.send(f"{round(self.client.latency * 1000)}ms") # It's now self.bot.latency
 
+    @commands.command()
+    async def kick(self, ctx, member : discord.Member, reason='none'):
+        """Kick a guild member"""
+        await member.kick(reason=reason)
+
 
 def setup(client):
     client.add_cog(BasicCommands(client))
