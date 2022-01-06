@@ -23,5 +23,17 @@ class BasicCommands(commands.Cog):
         """Bans a guild member"""
         await member.ban(reason=reason)
 
+    @commands.command()
+    async def unban(self, ctx, *, member):
+        """Unbans a member"""
+        banned_users = await ctx.guild.bans()
+        member_name, member_discriminator = member.split('#')
+
+        for ban_entry in banned_users:
+            user = ban_entry.user
+
+            if (user.name, user.discriminator) == (member_name, member_discriminator):
+                await ctx.guild.unban(user)
+
 def setup(client):
     client.add_cog(BasicCommands(client))
